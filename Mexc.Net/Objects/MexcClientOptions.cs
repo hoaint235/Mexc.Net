@@ -80,10 +80,10 @@ public class MexcSocketClientOptions : ClientOptions
         set => base.ApiCredentials = value;
     }
 
-    private MexcSocketApiClientOptions _spotStreamsOptions = new MexcSocketApiClientOptions()
+    private MexcSocketApiClientOptions _spotStreamsOptions = new(MexcApiAddresses.Default.SocketClientAddress)
     {
         SocketSubscriptionsCombineTarget = 10,
-        MaxSocketConnections = 50
+        MaxSocketConnections = 30
     };
 
     /// <summary>
@@ -98,7 +98,7 @@ public class MexcSocketClientOptions : ClientOptions
     private MexcSocketApiClientOptions _futuresStreamsOptions = new MexcSocketApiClientOptions()
     {
         SocketSubscriptionsCombineTarget = 10,
-        MaxSocketConnections = 50
+        MaxSocketConnections = 30
     };
 
     /// <summary>
@@ -125,7 +125,7 @@ public class MexcSocketClientOptions : ClientOptions
     {
         if (baseOn == null)
             return;
-
+        
         ApiCredentials = (MexcApiCredentials?)baseOn.ApiCredentials?.Copy();
         _spotStreamsOptions = new MexcSocketApiClientOptions(baseOn.SpotStreamsOptions, null);
         _futuresStreamsOptions = new MexcSocketApiClientOptions(baseOn.FuturesStreamsOptions, null);
@@ -196,6 +196,13 @@ public class MexcSocketApiClientOptions : SocketApiClientOptions
     /// ctor
     /// </summary>
     public MexcSocketApiClientOptions()
+    {
+    }
+
+    /// <summary>
+    /// ctor
+    /// </summary>
+    public MexcSocketApiClientOptions(string baseAddress) : base(baseAddress)
     {
     }
 

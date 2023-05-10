@@ -9,6 +9,10 @@ public class MexcApiAddresses
     /// The address used by the MexcClient for the SPOT API
     /// </summary>
     public string SpotAddress { get; set; } = string.Empty;
+    /// <summary>
+    /// The address used by the MexcSocketClient for the Spot API
+    /// </summary>
+    public string SocketClientAddress { get; set; } = "";
 
     /// <summary>
     /// The address used by the MexcClient for the futures API
@@ -21,5 +25,6 @@ public class MexcApiAddresses
     public static MexcApiAddresses Default = new()
     {
         SpotAddress = "https://api.mexc.com/api/",
+        SocketClientAddress = "wss://wbs.mexc.com/ws"
     };
 }

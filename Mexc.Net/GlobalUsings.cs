@@ -25,3 +25,5 @@ global using System.Globalization;
 global using Microsoft.Extensions.Logging;
 global using System.Diagnostics;
 global using Mexc.NET.Interfaces;
+global using CryptoExchange.Net.Sockets;
+global using Mexc.NET.Objects.Models.Spot.Socket;
